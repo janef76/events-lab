@@ -5,9 +5,8 @@ const handleFormSubmit = function(event) {
   const category = this.category.value;
   const genre = this.genre.value;
   addBookToList(title, author, category, genre);
+  clearForm();
   console.log(title, author, category, genre);
-
-
 }
 
 const addBookToList = function (titleInput, authorInput, categoryInput, genreInput) {
@@ -25,16 +24,20 @@ const addBookToList = function (titleInput, authorInput, categoryInput, genreInp
   categoryLi.textContent = categoryInput;
   genreLi.textContent = genreInput;
 
-
   books.appendChild(book);
   book.appendChild(titleLi);
   book.appendChild(authorLi);
   book.appendChild(categoryLi);
   book.appendChild(genreLi);
+
+}
+
+const clearForm = function () {
+  const form = document.querySelector('#book-form');
+  form.reset();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-
   const save = document.querySelector('#book-form');
   save.addEventListener('submit', handleFormSubmit);
 });
